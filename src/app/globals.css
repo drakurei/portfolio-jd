@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Thème clair & pastel lumineux */
+  --background: #f5f5f7;
+  --foreground: #1b1b2b;
+  --muted: #5b5b6e;
+  --surface: #ffffff;
+  --obsidian-800: #ffffff; /* surfaces de <option> (héritage de nom) */
+  --obsidian-700: #f1f1f4;
+
+  /* Accents */
+  --accent: #6366f1; /* indigo interactif */
+  --accent-deep: #7c3aed; /* violet lisible sur clair */
+  --lav: #c4b5fd;
+  --mint: #6ee7b7;
+  --peach: #fdba74;
+
+  --indigo: var(--accent);
+  --indigo-bright: var(--accent-deep);
+
+  --glass-border: rgba(20, 20, 40, 0.08);
+  --glass-fill: rgba(255, 255, 255, 0.55);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-obsidian-800: var(--obsidian-800);
+  --color-obsidian-700: var(--obsidian-700);
+  --color-indigo: var(--indigo);
+  --color-indigo-bright: var(--indigo-bright);
+  --color-lav: var(--lav);
+  --color-mint: var(--mint);
+  --color-peach: var(--peach);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--lav);
+  color: #1b1b2b;
+}
+
+/* ---- Glassmorphism clair (frosted blanc) ---- */
+.glass {
+  background: var(--glass-fill);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 50px -28px rgba(99, 102, 241, 0.35);
+}
+
+.glass-hover {
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+.glass-hover:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 26px 60px -26px rgba(124, 58, 237, 0.45);
+}
+
+/* ---- Distorsion RGB shift (scroll horizontal) ---- */
+.teaser-card {
+  --rgb: 0px;
+  box-shadow:
+    calc(var(--rgb) * 1) 0 0 rgba(236, 72, 153, 0.4),
+    calc(var(--rgb) * -1) 0 0 rgba(6, 182, 212, 0.4),
+    0 18px 50px -28px rgba(99, 102, 241, 0.35);
+}
+
+/* ---- Film grain (léger, multiply sur clair) ---- */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grain 0.6s steps(2) infinite;
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-4%, 3%); }
+}
+
+/* ---- Dégradés de texte (lisibles sur clair) ---- */
+.text-gradient {
+  background: linear-gradient(120deg, #7c3aed 0%, #14b8a6 55%, #fb923c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.h-char {
+  background: linear-gradient(120deg, #7c3aed 0%, #14b8a6 55%, #fb923c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Typographie monumentale ---- */
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+.display-tight {
+  letter-spacing: -0.05em;
+}
+
+.reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+/* ---- Grille fine "cockpit" (sur clair) ---- */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(27, 27, 43, 0.04) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, rgba(27, 27, 43, 0.04) 0.5px, transparent 0.5px);
+  background-size: 48px 48px;
+}
+
+/* ---- Section helpers ---- */
+.section-shell {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain {
+    animation: none;
+  }
 }
