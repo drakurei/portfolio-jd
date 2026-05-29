@@ -43,6 +43,7 @@ export default function PortfolioGrid() {
           >
             <Link
               href={`/portfolio/${p.slug}`}
+              prefetch={false}
               className="glass glass-hover flex h-full flex-col overflow-hidden"
             >
               <div

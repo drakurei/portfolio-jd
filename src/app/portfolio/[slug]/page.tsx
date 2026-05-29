@@ -34,7 +34,7 @@ export default async function CaseStudy({
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-28">
-      <Link href="/portfolio" className="text-sm text-black/50 transition hover:text-black/80">
+      <Link href="/portfolio" prefetch={false} className="text-sm text-black/50 transition hover:text-black/80">
         ← Portfolio
       </Link>
 

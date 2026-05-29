@@ -36,14 +36,24 @@ export default function ContactConsulting() {
   const onSubmit = async (data: ContactInput) => {
     setServerError(null);
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Envoi impossible.");
+      // Site statique (GitHub Pages) : pas de serveur → on ouvre le client mail
+      // pré-rempli. (Upgrade possible : Formspree pour un envoi sans quitter la page.)
+      const subject = `Demande d'expertise — ${data.name}${data.company ? ` (${data.company})` : ""}`;
+      const body = [
+        `Nom : ${data.name}`,
+        `Email : ${data.email}`,
+        data.company ? `Entreprise : ${data.company}` : null,
+        `Budget : ${data.budget}`,
+        "",
+        data.message,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      const mailto = `mailto:${cv.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
       const { trackContactClick } = await import("@/lib/stats");
       trackContactClick();
+      window.location.href = mailto;
       setSent(true);
       requestAnimationFrame(() => {
         if (!check.current) return;
@@ -94,9 +104,9 @@ export default function ContactConsulting() {
                   fill="none"
                 />
               </svg>
-              <h3 className="mt-6 text-xl font-semibold">Demande envoyée</h3>
+              <h3 className="mt-6 text-xl font-semibold">Votre messagerie s&apos;ouvre</h3>
               <p className="mt-2 text-sm text-black/50">
-                Merci — je reviens vers vous très vite.
+                Finalisez l&apos;envoi depuis votre client mail — je reviens vers vous très vite.
               </p>
             </div>
           ) : (

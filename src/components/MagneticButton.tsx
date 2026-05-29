@@ -34,6 +34,7 @@ export default function MagneticButton({
     <Link
       ref={ref}
       href={href}
+      prefetch={false}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className={`inline-flex items-center gap-3 rounded-full px-8 py-4 font-medium will-change-transform ${className}`}

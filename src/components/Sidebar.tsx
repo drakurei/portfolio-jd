@@ -81,7 +81,7 @@ export default function Sidebar() {
         {/* Liquid blur panel */}
         <div className="pointer-events-none absolute inset-y-4 right-3 left-2 -z-10 rounded-3xl border border-black/[0.08] bg-white/70 shadow-[0_20px_60px_-30px_rgba(99,102,241,0.5)] backdrop-blur-2xl [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]" />
 
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" prefetch={false} className="flex items-center gap-2">
           <div ref={logoRef} className="transition-[filter] duration-300 will-change-transform">
             <JDLogo size={34} idSuffix="-nav" />
           </div>
@@ -94,6 +94,7 @@ export default function Sidebar() {
               <Link
                 key={item.id}
                 href={item.href}
+                prefetch={false}
                 className="group flex items-center gap-3"
               >
                 <span className={`font-mono text-[10px] transition ${isActive ? "text-indigo-bright" : "text-black/30"}`}>
