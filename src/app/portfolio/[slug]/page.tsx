@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, getProject } from "@/content/projects";
+import ProjectCover from "@/components/ProjectCover";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -53,12 +54,9 @@ export default async function CaseStudy({
         ))}
       </div>
 
-      <div
-        className="mt-12 h-64 w-full rounded-2xl"
-        style={{
-          background: `linear-gradient(120deg, ${p.accent}44, transparent 70%), radial-gradient(circle at 70% 30%, ${p.accent}66, transparent 60%)`,
-        }}
-      />
+      <div className="mt-12 h-72 w-full overflow-hidden rounded-2xl">
+        <ProjectCover slug={p.slug} index={projects.findIndex((x) => x.slug === p.slug) + 1} />
+      </div>
 
       <div className="mt-16 space-y-12">
         {STEPS.map((s) => (

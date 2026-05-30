@@ -3,7 +3,7 @@ import type { CvData } from "@/lib/types";
 export const cv: CvData = {
   identity: {
     name: "Jonathan Davy",
-    age: 20,
+    age: 21,
     title: "Développeur Full Stack",
     tagline:
       "Cybersécurité, réseaux et développement full‑stack. Je conçois des systèmes concrets, sécurisés et performants.",
