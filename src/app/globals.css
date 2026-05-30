@@ -137,6 +137,12 @@ body {
   vertical-align: top;
 }
 
+/* ---- Curseur custom (desktop) : masque le curseur natif ---- */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
 /* ---- Grille fine "cockpit" (sur clair) ---- */
 .grid-bg {
   background-image:

@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { contactSchema, type ContactInput, BUDGET_OPTIONS } from "@/lib/contact-schema";
 import { cv } from "@/content/cv";
+import ContactCard from "@/components/ContactCard";
 
 export default function ContactConsulting() {
   const root = useRef<HTMLElement>(null);
@@ -77,16 +78,11 @@ export default function ContactConsulting() {
           <h2 className="display text-5xl font-semibold sm:text-6xl">
             Demande <span className="text-gradient italic">d&apos;expertise</span>
           </h2>
-          <p className="mt-6 max-w-sm text-black/60">
+          <p className="mt-6 mb-8 max-w-sm text-black/60">
             Un projet, un audit, une mission d&apos;alternance ? Décrivez votre besoin — réponse
             sous 24h.
           </p>
-          <div className="mt-10 space-y-3 font-mono text-sm text-black/50">
-            <p>{cv.contact.email}</p>
-            <p>{cv.contact.phone}</p>
-            <p>{cv.contact.address}</p>
-            <p>{cv.contact.linkedin}</p>
-          </div>
+          <ContactCard />
         </div>
 
         <div className="contact-anim glass p-8">

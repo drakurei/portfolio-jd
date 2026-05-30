@@ -1,21 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
-import Tilt from "react-parallax-tilt";
+import { gsap, useGSAP } from "@/lib/gsap";
 import { projects, CATEGORIES } from "@/content/projects";
 import type { ProjectCategory } from "@/lib/types";
 
 type Filter = ProjectCategory | "Tous";
 
 export default function PortfolioGrid() {
+  const root = useRef<HTMLDivElement>(null);
   const [filter, setFilter] = useState<Filter>("Tous");
   const filters: Filter[] = ["Tous", ...CATEGORIES];
   const shown = filter === "Tous" ? projects : projects.filter((p) => p.category === filter);
 
+  useGSAP(
+    () => {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      gsap.from(".pf-row", {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: { trigger: root.current, start: "top 75%" },
+      });
+
+      if (reduced) return;
+      // Parallaxe sur les covers
+      gsap.utils.toArray<HTMLElement>(".pf-cover-img").forEach((img) => {
+        gsap.fromTo(
+          img,
+          { yPercent: -12 },
+          {
+            yPercent: 12,
+            ease: "none",
+            scrollTrigger: { trigger: img, start: "top bottom", end: "bottom top", scrub: true },
+          },
+        );
+      });
+    },
+    { scope: root, dependencies: [filter] },
+  );
+
   return (
-    <div>
-      <div className="mb-10 flex flex-wrap gap-3">
+    <div ref={root}>
+      <div className="mb-14 flex flex-wrap gap-3">
         {filters.map((f) => (
           <button
             key={f}
@@ -31,45 +62,63 @@ export default function PortfolioGrid() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {shown.map((p) => (
-          <Tilt
-            key={p.slug}
-            tiltMaxAngleX={5}
-            tiltMaxAngleY={5}
-            glareEnable
-            glareMaxOpacity={0.12}
-            glareColor="#6366f1"
-          >
+      <div className="space-y-20">
+        {shown.map((p, i) => {
+          const reversed = i % 2 === 1;
+          return (
             <Link
+              key={p.slug}
               href={`/portfolio/${p.slug}`}
               prefetch={false}
-              className="glass glass-hover flex h-full flex-col overflow-hidden"
+              data-cursor
+              className="pf-row group grid grid-cols-1 items-center gap-8 md:grid-cols-5"
             >
+              {/* Cover ~60% avec parallaxe */}
               <div
-                className="relative h-40 w-full"
-                style={{
-                  background: `linear-gradient(120deg, ${p.accent}33, transparent 70%), radial-gradient(circle at 70% 30%, ${p.accent}55, transparent 60%)`,
-                }}
+                className={`relative h-64 overflow-hidden rounded-2xl border border-black/5 md:h-80 md:col-span-3 ${
+                  reversed ? "md:order-2" : ""
+                }`}
               >
-                <span className="absolute right-4 top-4 rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
+                <div
+                  className="pf-cover-img absolute inset-x-0 -top-[12%] h-[124%] w-full"
+                  style={{
+                    background: `linear-gradient(125deg, ${p.accent}40, transparent 60%), radial-gradient(circle at 70% 30%, ${p.accent}66, transparent 60%), #ffffff`,
+                  }}
+                />
+                <span className="absolute left-6 top-6 font-mono text-7xl font-bold text-black/5">
+                  0{i + 1}
+                </span>
+                <span className="absolute right-5 top-5 rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
                   {p.category}
                 </span>
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-semibold">{p.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-black/55">{p.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.stack.slice(0, 4).map((t) => (
-                    <span key={t} className="font-mono text-[11px] text-black/40">
-                      #{t}
+
+              {/* Infos ~40% */}
+              <div className={`md:col-span-2 ${reversed ? "md:order-1" : ""}`}>
+                <h3 className="display text-3xl font-semibold sm:text-4xl">{p.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-black/60">{p.description}</p>
+
+                {/* Stack révélé au survol (animation fluide en cascade) */}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.stack.slice(0, 5).map((t, j) => (
+                    <span
+                      key={t}
+                      className="pf-tag translate-y-2 rounded-full border border-indigo/25 bg-indigo/5 px-3 py-1 text-xs text-indigo-bright opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+                      style={{ transitionDelay: `${j * 60}ms` }}
+                    >
+                      {t}
                     </span>
                   ))}
                 </div>
+
+                <span className="mt-6 inline-flex items-center gap-2 text-sm text-black/70">
+                  Voir le case study
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </span>
               </div>
             </Link>
-          </Tilt>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
