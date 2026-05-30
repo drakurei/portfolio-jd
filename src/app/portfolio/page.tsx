@@ -18,6 +18,7 @@ export default async function PortfolioPage() {
       <section className="relative flex h-[68vh] min-h-[420px] items-end overflow-hidden">
         <video
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "brightness(1.06) contrast(1.1) saturate(1.05)" }}
           autoPlay
           muted
           loop
@@ -28,10 +29,10 @@ export default async function PortfolioPage() {
           {/* chemin avec basePath (Next ne préfixe pas les <source> bruts) */}
           <source src="/portfolio-jd/neo.mp4" type="video/mp4" />
         </video>
-        {/* Voiles : on garde le côté clair/luxe et la lisibilité */}
-        <div className="absolute inset-0 bg-[#faf8f3]/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#faf8f3] via-[#faf8f3]/40 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(191,160,106,0.18),transparent_60%)]" />
+        {/* Voile léger : la vidéo respire. Dégradé localisé en bas pour la lisibilité du titre. */}
+        <div className="absolute inset-0 bg-[#faf8f3]/20" />
+        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#faf8f3] via-[#faf8f3]/75 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_25%,rgba(191,160,106,0.22),transparent_60%)]" />
 
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-14">
           <p className="eyebrow mb-4">Portfolio complet</p>

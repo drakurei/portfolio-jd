@@ -42,6 +42,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Jonathan Davy",
+              jobTitle: "Développeur Full Stack",
+              url: "https://drakurei.github.io/portfolio-jd",
+              email: "jonathandavy8@gmail.com",
+              telephone: "+33601308841",
+              address: { "@type": "PostalAddress", addressLocality: "Évry", postalCode: "91000", addressCountry: "FR" },
+              sameAs: ["https://linkedin.com/in/jonathan91", "https://github.com/drakurei"],
+              knowsAbout: ["Next.js", "TypeScript", "GSAP", "Cybersécurité", "Réseaux", "Full Stack"],
+            }),
+          }}
+        />
         <ShaderBackground />
         <FilmGrain />
         <CustomCursor />

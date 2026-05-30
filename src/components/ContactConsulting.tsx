@@ -11,6 +11,7 @@ import ContactCard from "@/components/ContactCard";
 export default function ContactConsulting() {
   const root = useRef<HTMLElement>(null);
   const check = useRef<SVGPathElement>(null);
+  const honeypot = useRef<HTMLInputElement>(null);
   const [sent, setSent] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -36,6 +37,11 @@ export default function ContactConsulting() {
 
   const onSubmit = async (data: ContactInput) => {
     setServerError(null);
+    // Anti-spam : si le champ piège (honeypot) est rempli, c'est un bot → on ignore.
+    if (honeypot.current?.value) {
+      setSent(true);
+      return;
+    }
     try {
       // Site statique (GitHub Pages) : pas de serveur → on ouvre le client mail
       // pré-rempli. (Upgrade possible : Formspree pour un envoi sans quitter la page.)
@@ -107,6 +113,16 @@ export default function ContactConsulting() {
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+              {/* Honeypot anti-spam — invisible pour les humains, piège à bots */}
+              <input
+                ref={honeypot}
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
               <Field label="Nom" error={errors.name?.message}>
                 <input className="ipt" {...register("name")} />
               </Field>

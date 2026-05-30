@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
 import { JD_PATHS } from "@/components/JDLogo";
 
@@ -8,41 +8,38 @@ export default function Loader() {
   const root = useRef<HTMLDivElement>(null);
   const [done, setDone] = useState(false);
 
+  // Filet de sécurité : quoi qu'il arrive (GSAP en échec, asset bloqué…),
+  // le loader disparaît au bout de 2,6 s — il ne masque JAMAIS le contenu durablement.
+  useEffect(() => {
+    const t = setTimeout(() => setDone(true), 2600);
+    return () => clearTimeout(t);
+  }, []);
+
   useGSAP(
     () => {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const tl = gsap.timeline({
-        onComplete: () => {
-          setDone(true);
-          // L'intro modifie la mise en page : on recalcule les déclencheurs
-          // pour qu'aucune section ne reste masquée.
-          ScrollTrigger.refresh();
-        },
-      });
+      const finish = () => {
+        setDone(true);
+        ScrollTrigger.refresh();
+      };
 
       if (reduced) {
-        tl.set(root.current, { display: "none" });
+        finish();
         return;
       }
 
-      // Étape 1 — morphing des initiales JD (stems -> lettres)
+      const tl = gsap.timeline({ onComplete: finish });
       tl.set([".jd-d", ".jd-j"], { autoAlpha: 1 })
-        .to(".jd-d", { duration: 0.9, morphSVG: JD_PATHS.dFinal, ease: "power3.inOut" })
-        .to(".jd-j", { duration: 0.9, morphSVG: JD_PATHS.jFinal, ease: "power3.inOut" }, "-=0.7")
-        // Étape 2 — scramble "CHARGEMENT" -> "JONATHAN DAVY"
+        .to(".jd-d", { duration: 0.55, morphSVG: JD_PATHS.dFinal, ease: "power3.inOut" })
+        .to(".jd-j", { duration: 0.55, morphSVG: JD_PATHS.jFinal, ease: "power3.inOut" }, "-=0.4")
         .to(
           ".jd-tag",
-          {
-            duration: 1.1,
-            scrambleText: { text: "JONATHAN DAVY", chars: "upperCase", revealDelay: 0.2 },
-          },
-          "-=0.5",
+          { duration: 0.6, scrambleText: { text: "JONATHAN DAVY", chars: "upperCase", revealDelay: 0.1 } },
+          "-=0.35",
         )
-        .to({}, { duration: 0.25 })
-        // Étape 3 — "Big Bang" : explosion vers l'extérieur (scale 15) + reveal
-        .to(".jd-core", { scale: 15, opacity: 0, duration: 0.9, ease: "power3.in" })
-        .to(".radial-wipe", { autoAlpha: 0, duration: 0.6 }, "-=0.55")
-        .set(root.current, { display: "none" });
+        .to({}, { duration: 0.1 })
+        .to(".jd-core", { scale: 12, opacity: 0, duration: 0.55, ease: "power3.in" })
+        .to(".radial-wipe", { autoAlpha: 0, duration: 0.45 }, "-=0.4");
     },
     { scope: root },
   );
@@ -51,7 +48,6 @@ export default function Loader() {
 
   return (
     <div ref={root} className="fixed inset-0 z-[100]">
-      {/* Couche claire qui se fait "essuyer" pour révéler le site */}
       <div className="radial-wipe absolute inset-0 bg-[#faf8f3]" />
 
       <div className="jd-core absolute inset-0 flex flex-col items-center justify-center">
@@ -81,9 +77,7 @@ export default function Loader() {
             <path className="jd-j" d={JD_PATHS.jStem} style={{ visibility: "hidden" }} />
           </g>
         </svg>
-        <p className="jd-tag mt-6 font-mono text-xs tracking-[0.4em] text-indigo-bright">
-          CHARGEMENT
-        </p>
+        <p className="jd-tag mt-6 font-mono text-xs tracking-[0.4em] text-gold-deep">CHARGEMENT</p>
       </div>
     </div>
   );

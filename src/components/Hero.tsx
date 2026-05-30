@@ -29,7 +29,12 @@ export default function Hero() {
 
       const split = SplitText.create(title.current, { type: "chars, words", charsClass: "h-char" });
 
-      const intro = gsap.timeline({ delay: 3.6 });
+      // Filet de sécurité : si l'intro ne se joue pas (erreur), tout redevient visible.
+      const safety = window.setTimeout(() => {
+        gsap.set([split.chars, ".hero-sub", ".hero-cue"], { clearProps: "opacity,transform" });
+      }, 3000);
+
+      const intro = gsap.timeline({ delay: 1.5, onStart: () => clearTimeout(safety) });
       intro
         .from(split.chars, {
           yPercent: 120,
@@ -59,7 +64,10 @@ export default function Hero() {
         },
       );
 
-      return () => split.revert();
+      return () => {
+        clearTimeout(safety);
+        split.revert();
+      };
     },
     { scope: root },
   );
@@ -84,13 +92,19 @@ export default function Hero() {
         <p className="hero-sub mx-auto mt-8 max-w-xl text-balance text-foreground/60">
           {cv.identity.tagline}
         </p>
-        <div className="hero-sub mt-10">
+        <div className="hero-sub mt-10 flex flex-wrap items-center justify-center gap-4">
           <MagneticButton
-            href="/#strategy"
-            className="bg-indigo text-white hover:bg-indigo-bright"
+            href="/contact"
+            className="bg-[linear-gradient(120deg,#c9aa72,#a9853f)] text-white shadow-[0_12px_34px_-12px_rgba(154,123,63,0.6)]"
           >
-            Entrer dans l&apos;univers
+            Démarrer un projet
             <span>→</span>
+          </MagneticButton>
+          <MagneticButton
+            href="/portfolio"
+            className="border border-foreground/20 text-foreground/80 hover:border-gold"
+          >
+            Voir le portfolio
           </MagneticButton>
         </div>
       </div>

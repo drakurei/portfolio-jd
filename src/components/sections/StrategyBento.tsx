@@ -18,8 +18,8 @@ const BLOCKS: Block[] = [
     title: "Performance is Trust",
     desc: "Un site qui s'affiche en moins d'une seconde n'est pas un détail technique : c'est la première promesse tenue. Avant même un mot, la vitesse dit au visiteur « ici, c'est sérieux ». Next.js, rendu serveur, edge — la confiance se gagne au premier paint.",
     metrics: [
-      { label: "Conversion", value: "jusqu'à 3×" },
-      { label: "LCP", value: "< 1s" },
+      { label: "Lighthouse", value: "95 +" },
+      { label: "LCP visé", value: "< 1,5 s" },
     ],
     span: "md:col-span-2 md:row-span-2",
   },
@@ -28,8 +28,8 @@ const BLOCKS: Block[] = [
     title: "Creative Emotion",
     desc: "Le design plat informe. L'immersion, elle, crée un lien. Le mouvement (GSAP), le rythme du scroll et les micro-interactions installent une émotion que le visiteur associe à votre marque — et qu'il retient.",
     metrics: [
-      { label: "Rétention", value: "+ temps passé" },
-      { label: "Mémorisation", value: "supérieure" },
+      { label: "Animations", value: "60 fps" },
+      { label: "Accessibilité", value: "WCAG AA" },
     ],
     span: "",
   },
