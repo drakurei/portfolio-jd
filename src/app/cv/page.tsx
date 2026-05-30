@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import About from "@/components/sections/About";
-import SkillsGraph from "@/components/sections/SkillsGraph";
+import SkillsBento from "@/components/sections/SkillsBento";
 import Journey from "@/components/sections/Journey";
 import Pricing from "@/components/sections/Pricing";
 import CvDownloadButton from "@/components/CvDownloadButton";
@@ -28,7 +28,7 @@ export default function CvPage() {
       </section>
 
       <About />
-      <SkillsGraph />
+      <SkillsBento />
       <Journey />
 
       <section className="px-6 py-20">
