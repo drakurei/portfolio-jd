@@ -78,7 +78,7 @@ export default function StrategyBento() {
               className={`strat-block group glass glass-hover relative flex flex-col overflow-hidden p-8 ${b.span}`}
             >
               <h3 className="display text-3xl font-semibold sm:text-4xl">{b.title}</h3>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-black/65">{b.desc}</p>
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground/65">{b.desc}</p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 {b.metrics.map((m) => (
@@ -86,7 +86,7 @@ export default function StrategyBento() {
                     key={m.label}
                     className="rounded-lg border border-indigo/30 bg-indigo/10 px-3 py-2"
                   >
-                    <p className="font-mono text-[10px] uppercase tracking-wider text-black/40">
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-foreground/40">
                       {m.label}
                     </p>
                     <p className="text-sm font-semibold text-indigo-bright">{m.value}</p>

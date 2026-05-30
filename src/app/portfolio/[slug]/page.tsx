@@ -34,13 +34,13 @@ export default async function CaseStudy({
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 py-28">
-      <Link href="/portfolio" prefetch={false} className="text-sm text-black/50 transition hover:text-black/80">
+      <Link href="/portfolio" prefetch={false} className="text-sm text-foreground/50 transition hover:text-foreground/80">
         ← Portfolio
       </Link>
 
       <p className="eyebrow mb-3 mt-8">{p.category}</p>
       <h1 className="display text-5xl font-semibold sm:text-7xl">{p.title}</h1>
-      <p className="mt-6 max-w-2xl text-lg text-black/65">{p.description}</p>
+      <p className="mt-6 max-w-2xl text-lg text-foreground/65">{p.description}</p>
 
       <div className="mt-6 flex flex-wrap gap-2">
         {p.stack.map((t) => (
@@ -67,14 +67,14 @@ export default async function CaseStudy({
               <p className="font-mono text-sm text-indigo-bright">{s.num}</p>
               <h2 className="text-xl font-semibold">{s.label}</h2>
             </div>
-            <p className="text-black/70 leading-relaxed">{p[s.key]}</p>
+            <p className="text-foreground/70 leading-relaxed">{p[s.key]}</p>
           </section>
         ))}
       </div>
 
       <div className="mt-16 glass p-8">
         <p className="eyebrow mb-2">Choix d&apos;architecture</p>
-        <p className="text-sm leading-relaxed text-black/75">{p.audit}</p>
+        <p className="text-sm leading-relaxed text-foreground/75">{p.audit}</p>
       </div>
     </main>
   );

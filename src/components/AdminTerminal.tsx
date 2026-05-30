@@ -83,15 +83,15 @@ export default function AdminTerminal() {
         ? "text-[#10b981]"
         : k === "err"
           ? "text-[#ef4444]"
-          : "text-black/70";
+          : "text-foreground/70";
 
   return (
     <div className="glass overflow-hidden font-mono text-sm">
-      <div className="flex items-center gap-2 border-b border-black/10 bg-black/[0.03] px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-foreground/10 bg-foreground/[0.03] px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-[#ec4899]" />
         <span className="h-3 w-3 rounded-full bg-[#f59e0b]" />
         <span className="h-3 w-3 rounded-full bg-[#10b981]" />
-        <span className="ml-3 text-xs text-black/40">
+        <span className="ml-3 text-xs text-foreground/40">
           admin terminal {dirty && <span className="text-[#f59e0b]">● non déployé</span>}
         </span>
       </div>
@@ -108,7 +108,7 @@ export default function AdminTerminal() {
           run(input);
           setInput("");
         }}
-        className="flex items-center gap-2 border-t border-black/10 px-5 py-3"
+        className="flex items-center gap-2 border-t border-foreground/10 px-5 py-3"
       >
         <span className="text-indigo-bright">$</span>
         <input
@@ -116,7 +116,7 @@ export default function AdminTerminal() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           spellCheck={false}
-          className="flex-1 bg-transparent text-black/80 outline-none"
+          className="flex-1 bg-transparent text-foreground/80 outline-none"
           placeholder='cv.set title "Architecte Full Stack"'
         />
       </form>

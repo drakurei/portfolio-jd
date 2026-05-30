@@ -69,20 +69,20 @@ export default function CommandLineContact() {
 
   return (
     <div ref={ref} className="glass overflow-hidden font-mono text-sm">
-      <div className="flex items-center gap-2 border-b border-black/10 bg-black/[0.03] px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-foreground/10 bg-foreground/[0.03] px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-[#ec4899]" />
         <span className="h-3 w-3 rounded-full bg-[#f59e0b]" />
         <span className="h-3 w-3 rounded-full bg-[#10b981]" />
-        <span className="ml-3 text-xs text-black/40">jonathan@davy ~ contact</span>
+        <span className="ml-3 text-xs text-foreground/40">jonathan@davy ~ contact</span>
       </div>
       <div className="min-h-[12rem] space-y-1 p-5 leading-relaxed">
         {done.map((l, i) => (
-          <p key={i} className={l.startsWith("$") ? "text-indigo-bright" : "text-black/75"}>
+          <p key={i} className={l.startsWith("$") ? "text-indigo-bright" : "text-foreground/75"}>
             {l}
           </p>
         ))}
         {current && (
-          <p className={current.startsWith("$") ? "text-indigo-bright" : "text-black/75"}>
+          <p className={current.startsWith("$") ? "text-indigo-bright" : "text-foreground/75"}>
             {current}
             <span className="ml-0.5 inline-block h-4 w-2 animate-pulse bg-indigo align-middle" />
           </p>

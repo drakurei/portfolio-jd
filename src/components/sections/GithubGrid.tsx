@@ -42,13 +42,13 @@ export default function GithubGrid({ repos }: { repos: GithubRepo[] }) {
             className="repo-card glass glass-hover flex h-full flex-col p-6"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-mono text-base font-semibold text-[#1b1b2b]">{repo.name}</h3>
-              <span className="text-black/30">↗</span>
+              <h3 className="font-mono text-base font-semibold text-foreground">{repo.name}</h3>
+              <span className="text-foreground/30">↗</span>
             </div>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-black/55">
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/55">
               {repo.description ?? "—"}
             </p>
-            <div className="mt-5 flex items-center gap-4 text-xs text-black/40">
+            <div className="mt-5 flex items-center gap-4 text-xs text-foreground/40">
               {repo.language && (
                 <span className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-indigo" />

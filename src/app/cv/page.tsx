@@ -40,7 +40,7 @@ export default function CvPage() {
 
       <Pricing />
 
-      <footer className="border-t border-black/5 px-6 py-10 text-center font-mono text-xs text-black/30">
+      <footer className="border-t border-foreground/5 px-6 py-10 text-center font-mono text-xs text-foreground/30">
         © {new Date().getFullYear()} Jonathan Davy
       </footer>
     </main>

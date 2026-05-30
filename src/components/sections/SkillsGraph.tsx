@@ -73,7 +73,7 @@ export default function SkillsGraph() {
         <h2 className="display mb-4 text-5xl font-semibold sm:text-6xl">
           Une stack <span className="text-gradient italic">connectée</span>
         </h2>
-        <p className="mb-10 max-w-xl text-sm text-black/55">
+        <p className="mb-10 max-w-xl text-sm text-foreground/55">
           Pas des pourcentages — des technologies qui s&apos;articulent. Survolez un nœud pour voir
           ses connexions.
         </p>
@@ -124,7 +124,7 @@ export default function SkillsGraph() {
                     x={n.x}
                     y={n.y - 22}
                     textAnchor="middle"
-                    className="fill-[#1b1b2b] font-mono"
+                    className="fill-[#ececf3] font-mono"
                     fontSize="13"
                     fontWeight={active ? 700 : 500}
                   >

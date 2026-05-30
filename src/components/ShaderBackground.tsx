@@ -28,15 +28,15 @@ void main(){
   vec2 p = uv * 3.0;
   float t = u_time * 0.05;
   float f = fbm(p + vec2(t, -t) + fbm(p + t));
-  // Aurore "énergie" claire (bleu / cyan)
-  vec3 base = vec3(0.962, 0.969, 0.980);
-  vec3 blue = vec3(0.145, 0.388, 0.922);
-  vec3 cyan = vec3(0.024, 0.714, 0.831);
-  vec3 sky  = vec3(0.055, 0.647, 0.914);
+  // Nébuleuse sombre violette (façon Ahmed Ragab)
+  vec3 base = vec3(0.039, 0.039, 0.071);
+  vec3 violet = vec3(0.545, 0.361, 0.965);
+  vec3 indigo = vec3(0.388, 0.400, 0.945);
+  vec3 deep   = vec3(0.486, 0.227, 0.929);
   vec3 col = base;
-  col = mix(col, sky,  smoothstep(0.28, 0.85, f) * 0.45);
-  col = mix(col, cyan, smoothstep(0.74, 1.05, f) * 0.40);
-  col = mix(col, blue, (1.0 - smoothstep(0.0, 0.34, f)) * 0.30);
+  col = mix(col, indigo, smoothstep(0.45, 0.95, f) * 0.30);
+  col = mix(col, violet, smoothstep(0.78, 1.08, f) * 0.28);
+  col = mix(col, deep,   (1.0 - smoothstep(0.0, 0.30, f)) * 0.18);
   gl_FragColor = vec4(col, 1.0);
 }
 `;

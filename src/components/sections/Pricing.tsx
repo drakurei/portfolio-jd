@@ -43,11 +43,11 @@ export default function Pricing() {
                 </span>
               )}
               <h3 className="text-xl font-semibold">{o.name}</h3>
-              <p className="mt-1 text-sm text-black/50">{o.tagline}</p>
+              <p className="mt-1 text-sm text-foreground/50">{o.tagline}</p>
               <p className="mt-4 text-2xl font-bold text-indigo-bright">{o.price}</p>
               <ul className="mt-6 flex-1 space-y-2.5">
                 {o.features.map((f) => (
-                  <li key={f} className="flex gap-2 text-sm text-black/70">
+                  <li key={f} className="flex gap-2 text-sm text-foreground/70">
                     <span className="text-indigo-bright">→</span>
                     {f}
                   </li>

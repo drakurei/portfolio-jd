@@ -78,7 +78,7 @@ export default function ContactConsulting() {
           <h2 className="display text-5xl font-semibold sm:text-6xl">
             Demande <span className="text-gradient italic">d&apos;expertise</span>
           </h2>
-          <p className="mt-6 mb-8 max-w-sm text-black/60">
+          <p className="mt-6 mb-8 max-w-sm text-foreground/60">
             Un projet, un audit, une mission d&apos;alternance ? Décrivez votre besoin — réponse
             sous 24h.
           </p>
@@ -101,7 +101,7 @@ export default function ContactConsulting() {
                 />
               </svg>
               <h3 className="mt-6 text-xl font-semibold">Votre messagerie s&apos;ouvre</h3>
-              <p className="mt-2 text-sm text-black/50">
+              <p className="mt-2 text-sm text-foreground/50">
                 Finalisez l&apos;envoi depuis votre client mail — je reviens vers vous très vite.
               </p>
             </div>
@@ -150,15 +150,15 @@ export default function ContactConsulting() {
         .ipt {
           width: 100%;
           border-radius: 0.75rem;
-          border: 1px solid rgba(20,20,40,0.12);
-          background: rgba(255,255,255,0.8);
+          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(255,255,255,0.04);
           padding: 0.7rem 0.9rem;
           font-size: 0.9rem;
-          color: #1b1b2b;
+          color: #ececf3;
           outline: none;
           transition: border-color 0.2s ease;
         }
-        .ipt:focus { border-color: rgba(124,58,237,0.6); }
+        .ipt:focus { border-color: rgba(167,139,250,0.7); }
       `}</style>
     </section>
   );
@@ -175,7 +175,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs uppercase tracking-wider text-black/50">{label}</span>
+      <span className="mb-1.5 block text-xs uppercase tracking-wider text-foreground/50">{label}</span>
       {children}
       {error && <span className="mt-1 block text-xs text-red-400">{error}</span>}
     </label>

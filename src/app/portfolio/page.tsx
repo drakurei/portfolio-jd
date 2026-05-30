@@ -29,7 +29,7 @@ export default async function PortfolioPage() {
             </h2>
           </div>
           {isMock && (
-            <span className="rounded-full border border-black/10 bg-black/5 px-4 py-2 font-mono text-xs text-black/40">
+            <span className="rounded-full border border-foreground/10 bg-foreground/5 px-4 py-2 font-mono text-xs text-foreground/40">
               démo · configurez NEXT_PUBLIC_GITHUB_USERNAME
             </span>
           )}

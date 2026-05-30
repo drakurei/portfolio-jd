@@ -80,7 +80,7 @@ export default function AdminPage() {
         </div>
       </header>
 
-      <p className="mb-8 rounded-xl border border-black/10 bg-black/5 p-4 text-sm text-black/50">
+      <p className="mb-8 rounded-xl border border-foreground/10 bg-foreground/5 p-4 text-sm text-foreground/50">
         Mode sans backend : modifications sauvegardées dans le navigateur (localStorage).
         Exportez le JSON et remplacez les fichiers de <code className="text-indigo-bright">src/content/</code>{" "}
         pour publier. La phase backend branchera Supabase + auth sur cette même interface.
@@ -92,7 +92,7 @@ export default function AdminPage() {
             key={t}
             onClick={() => setTab(t)}
             className={`rounded-full px-5 py-2 text-sm capitalize transition ${
-              tab === t ? "bg-indigo text-white" : "border border-black/10 text-black/50"
+              tab === t ? "bg-indigo text-white" : "border border-foreground/10 text-foreground/50"
             }`}
           >
             {t}
@@ -136,7 +136,7 @@ export default function AdminPage() {
       {tab === "tarifs" && (
         <Section title="Offres & Tarifs">
           {offers.map((o, i) => (
-            <div key={i} className="mb-5 rounded-xl border border-black/10 p-4">
+            <div key={i} className="mb-5 rounded-xl border border-foreground/10 p-4">
               <Input label="Nom" value={o.name} onChange={(v) => { const c = structuredClone(offers); c[i].name = v; setOffers(c); dirty(); }} />
               <Input label="Prix" value={o.price} onChange={(v) => { const c = structuredClone(offers); c[i].price = v; setOffers(c); dirty(); }} />
               <Input label="Accroche" value={o.tagline} onChange={(v) => { const c = structuredClone(offers); c[i].tagline = v; setOffers(c); dirty(); }} />
@@ -148,10 +148,10 @@ export default function AdminPage() {
       {tab === "projets" && (
         <Section title="Projets">
           {projects.map((p, i) => (
-            <div key={p.slug} className="mb-5 rounded-xl border border-black/10 p-4">
+            <div key={p.slug} className="mb-5 rounded-xl border border-foreground/10 p-4">
               <Input label="Titre" value={p.title} onChange={(v) => { const c = structuredClone(projects); c[i].title = v; setProjects(c); dirty(); }} />
               <label className="block">
-                <span className="mb-1.5 block text-xs uppercase tracking-wider text-black/50">Catégorie</span>
+                <span className="mb-1.5 block text-xs uppercase tracking-wider text-foreground/50">Catégorie</span>
                 <select className="ipt w-full" value={p.category} onChange={(e) => { const c = structuredClone(projects); c[i].category = e.target.value as ProjectCategory; setProjects(c); dirty(); }}>
                   {CATEGORIES.map((cat) => <option key={cat} value={cat} className="bg-obsidian-800">{cat}</option>)}
                 </select>
@@ -165,16 +165,16 @@ export default function AdminPage() {
       {tab === "stats" && stats && (
         <Section title="Statistiques (locales)">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border border-black/10 bg-black/5 p-5">
-              <p className="font-mono text-xs uppercase tracking-wider text-black/40">Vues totales</p>
+            <div className="rounded-xl border border-foreground/10 bg-foreground/5 p-5">
+              <p className="font-mono text-xs uppercase tracking-wider text-foreground/40">Vues totales</p>
               <p className="mt-1 text-3xl font-bold text-indigo-bright">{stats.views}</p>
             </div>
-            <div className="rounded-xl border border-black/10 bg-black/5 p-5">
-              <p className="font-mono text-xs uppercase tracking-wider text-black/40">Clics contact</p>
+            <div className="rounded-xl border border-foreground/10 bg-foreground/5 p-5">
+              <p className="font-mono text-xs uppercase tracking-wider text-foreground/40">Clics contact</p>
               <p className="mt-1 text-3xl font-bold text-indigo-bright">{stats.contactClicks}</p>
             </div>
-            <div className="rounded-xl border border-black/10 bg-black/5 p-5">
-              <p className="font-mono text-xs uppercase tracking-wider text-black/40">Pages suivies</p>
+            <div className="rounded-xl border border-foreground/10 bg-foreground/5 p-5">
+              <p className="font-mono text-xs uppercase tracking-wider text-foreground/40">Pages suivies</p>
               <p className="mt-1 text-3xl font-bold text-indigo-bright">
                 {Object.keys(stats.byPath).length}
               </p>
@@ -187,11 +187,11 @@ export default function AdminPage() {
             </p>
             <div className="space-y-2">
               {Object.entries(stats.byPath).length === 0 && (
-                <p className="text-sm text-black/40">Aucune donnée pour l&apos;instant.</p>
+                <p className="text-sm text-foreground/40">Aucune donnée pour l&apos;instant.</p>
               )}
               {Object.entries(stats.byPath).map(([path, n]) => (
                 <div key={path} className="flex items-center justify-between text-sm">
-                  <span className="font-mono text-black/70">{path}</span>
+                  <span className="font-mono text-foreground/70">{path}</span>
                   <span className="text-indigo-bright">{n}</span>
                 </div>
               ))}
@@ -208,7 +208,7 @@ export default function AdminPage() {
             Réinitialiser les stats
           </button>
 
-          <p className="mt-4 text-xs text-black/40">
+          <p className="mt-4 text-xs text-foreground/40">
             Mesure locale (ce navigateur). En phase backend, ces compteurs viendront de Supabase
             pour un suivi global.
           </p>
@@ -217,7 +217,7 @@ export default function AdminPage() {
 
       {tab === "terminal" && (
         <Section title="Terminal — push CV">
-          <p className="mb-4 text-sm text-black/50">
+          <p className="mb-4 text-sm text-foreground/50">
             Modifiez et déployez votre CV en ligne de commande. Ex :{" "}
             <code className="text-indigo-bright">cv.set title &quot;Architecte Full Stack&quot;</code>{" "}
             puis <code className="text-indigo-bright">push</code>.
@@ -227,10 +227,10 @@ export default function AdminPage() {
       )}
 
       <style>{`
-        .ipt { border-radius:.6rem; border:1px solid rgba(20,20,40,.12); background:rgba(255,255,255,.8); padding:.55rem .8rem; font-size:.9rem; color:#1b1b2b; outline:none; }
-        .ipt:focus { border-color:rgba(124,58,237,.6); }
-        .btn-primary { border-radius:9999px; background:#6366f1; padding:.6rem 1.2rem; font-size:.85rem; color:#fff; }
-        .btn-ghost { border-radius:9999px; border:1px solid rgba(20,20,40,.18); padding:.6rem 1.2rem; font-size:.85rem; color:#5b5b6e; }
+        .ipt { border-radius:.6rem; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:.55rem .8rem; font-size:.9rem; color:#ececf3; outline:none; }
+        .ipt:focus { border-color:rgba(167,139,250,.7); }
+        .btn-primary { border-radius:9999px; background:#8b5cf6; padding:.6rem 1.2rem; font-size:.85rem; color:#fff; }
+        .btn-ghost { border-radius:9999px; border:1px solid rgba(255,255,255,.2); padding:.6rem 1.2rem; font-size:.85rem; color:rgba(236,236,243,.7); }
       `}</style>
     </main>
   );
@@ -248,7 +248,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Input({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs uppercase tracking-wider text-black/50">{label}</span>
+      <span className="mb-1.5 block text-xs uppercase tracking-wider text-foreground/50">{label}</span>
       <input className="ipt w-full" value={value} onChange={(e) => onChange(e.target.value)} />
     </label>
   );
@@ -257,7 +257,7 @@ function Input({ label, value, onChange }: { label: string; value: string; onCha
 function Textarea({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs uppercase tracking-wider text-black/50">{label}</span>
+      <span className="mb-1.5 block text-xs uppercase tracking-wider text-foreground/50">{label}</span>
       <textarea rows={4} className="ipt w-full resize-none" value={value} onChange={(e) => onChange(e.target.value)} />
     </label>
   );

@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  /* Thème "Clair énergie" — inspiration Maritime/Fort Energy */
-  --background: #f5f7fa;
-  --foreground: #0f1b2d;
-  --muted: #51607a;
-  --surface: #ffffff;
-  --obsidian-800: #ffffff; /* surfaces de <option> (héritage de nom) */
-  --obsidian-700: #eef2f7;
+  /* Thème SOMBRE — inspiration Ahmed Ragab (violet électrique sur near-black) */
+  --background: #0a0a12;
+  --foreground: #ececf3;
+  --muted: #9a9ab2;
+  --surface: #14141f;
+  --obsidian-800: #14141f; /* surfaces de <option> */
+  --obsidian-700: #1c1c2a;
 
-  /* Accents énergie (bleu / cyan) */
-  --accent: #2563eb; /* bleu interactif */
-  --accent-deep: #1d4ed8;
-  --cyan: #06b6d4;
-  --sky: #0ea5e9;
-  --lav: #93c5fd; /* aliases conservés -> teintes bleues/cyan */
-  --mint: #67e8f9;
-  --peach: #7dd3fc;
+  /* Accents (violet / indigo) */
+  --accent: #8b5cf6; /* violet électrique interactif */
+  --accent-deep: #a78bfa;
+  --cyan: #22d3ee;
+  --sky: #818cf8;
+  --lav: #a78bfa;
+  --mint: #22d3ee;
+  --peach: #818cf8;
 
   --indigo: var(--accent);
-  --indigo-bright: #0369a1; /* texte d'accent lisible sur clair */
+  --indigo-bright: #a78bfa; /* texte d'accent lisible sur sombre */
 
-  --glass-border: rgba(15, 27, 45, 0.08);
-  --glass-fill: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-fill: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
@@ -100,8 +100,8 @@ body {
   inset: 0;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.04;
-  mix-blend-mode: multiply;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   animation: grain 0.6s steps(2) infinite;
@@ -113,32 +113,32 @@ body {
 
 /* ---- Dégradés de texte (lisibles sur clair) ---- */
 .text-gradient {
-  background: linear-gradient(115deg, #1d4ed8 0%, #2563eb 40%, #06b6d4 100%);
+  background: linear-gradient(115deg, #ffffff 0%, #a78bfa 55%, #7c3aed 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .h-char {
-  background: linear-gradient(115deg, #1d4ed8 0%, #2563eb 40%, #06b6d4 100%);
+  background: linear-gradient(115deg, #ffffff 0%, #a78bfa 55%, #7c3aed 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Titre en contour lumineux (réf "POWERING PROGRESS") */
+/* Titre en contour lumineux (se remplit possible au scroll) */
 .outline-glow {
   color: transparent;
-  -webkit-text-stroke: 1.4px rgba(37, 99, 235, 0.9);
-  text-shadow: 0 0 22px rgba(6, 182, 212, 0.35);
+  -webkit-text-stroke: 1.4px rgba(167, 139, 250, 0.9);
+  text-shadow: 0 0 26px rgba(139, 92, 246, 0.45);
 }
 
-/* ---- Typographie "énergie" : capitales fines très espacées ---- */
+/* ---- Typographie "Ahmed Ragab" : sans gras massif ---- */
 .display {
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1.05;
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 0.96;
   font-style: normal;
 }
 .display span,
@@ -147,13 +147,28 @@ body {
   font-style: normal;
 }
 .display-tight {
-  letter-spacing: 0.04em;
+  letter-spacing: -0.035em;
 }
 
 .reveal-mask {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
+}
+
+/* ---- Marquee de rôles (façon Ahmed Ragab) ---- */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }
 
 /* ---- Curseur custom (desktop) : masque le curseur natif ---- */
@@ -165,8 +180,8 @@ html.has-custom-cursor * {
 /* ---- Grille fine "cockpit" (sur clair) ---- */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(27, 27, 43, 0.04) 0.5px, transparent 0.5px),
-    linear-gradient(90deg, rgba(27, 27, 43, 0.04) 0.5px, transparent 0.5px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px);
   background-size: 48px 48px;
 }
 

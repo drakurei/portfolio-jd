@@ -31,13 +31,13 @@ export default function About() {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:auto-rows-[minmax(0,1fr)]">
           <div className="bento-card glass glass-hover md:col-span-2 md:row-span-2 p-8">
-            <p className="text-lg leading-relaxed text-black/80">{cv.profile}</p>
+            <p className="text-lg leading-relaxed text-foreground/80">{cv.profile}</p>
           </div>
 
           <div className="bento-card glass glass-hover p-6">
             <p className="eyebrow mb-2">Localisation</p>
             <p className="text-2xl font-semibold">{cv.contact.address}</p>
-            <p className="mt-1 text-sm text-black/50">{cv.identity.age} ans</p>
+            <p className="mt-1 text-sm text-foreground/50">{cv.identity.age} ans</p>
           </div>
 
           <div className="bento-card glass glass-hover p-6">
@@ -45,7 +45,7 @@ export default function About() {
             <ul className="space-y-2">
               {cv.languages.map((l) => (
                 <li key={l.name} className="flex items-center justify-between text-sm">
-                  <span className="text-black/80">{l.name}</span>
+                  <span className="text-foreground/80">{l.name}</span>
                   <span className="font-mono text-indigo-bright">{l.level}</span>
                 </li>
               ))}
@@ -58,7 +58,7 @@ export default function About() {
               {cv.certifications.map((c) => (
                 <span
                   key={c}
-                  className="rounded-full border border-black/10 bg-black/5 px-4 py-2 text-sm text-black/70"
+                  className="rounded-full border border-foreground/10 bg-foreground/5 px-4 py-2 text-sm text-foreground/70"
                 >
                   {c}
                 </span>

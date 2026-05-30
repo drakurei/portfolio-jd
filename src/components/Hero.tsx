@@ -67,11 +67,10 @@ export default function Hero() {
   return (
     <section ref={root} id="hero" className="section-shell overflow-hidden">
       <div className="hero-bg absolute inset-0 -z-10">
-        {/* Fond clair "énergie" (aurore bleu/cyan) — pas de vidéo */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(37,99,235,0.28),transparent_60%),radial-gradient(ellipse_at_20%_15%,rgba(14,165,233,0.22),transparent_55%),radial-gradient(ellipse_at_82%_25%,rgba(6,182,212,0.2),transparent_55%)]" />
-        {/* Rayons de lumière subtils */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[conic-gradient(from_180deg_at_50%_120%,transparent_0deg,rgba(37,99,235,0.12)_20deg,transparent_40deg,rgba(6,182,212,0.1)_60deg,transparent_80deg)] opacity-70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f5f7fa]" />
+        {/* Fond sombre + halos violet/indigo (façon Ahmed Ragab) */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(139,92,246,0.35),transparent_60%),radial-gradient(ellipse_at_20%_12%,rgba(99,102,241,0.22),transparent_55%),radial-gradient(ellipse_at_82%_22%,rgba(124,58,237,0.2),transparent_55%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[conic-gradient(from_180deg_at_50%_120%,transparent_0deg,rgba(139,92,246,0.16)_20deg,transparent_40deg,rgba(99,102,241,0.12)_60deg,transparent_80deg)] opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a12]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-12">
@@ -82,7 +81,7 @@ export default function Hero() {
         >
           BÂTIR L&apos;AUDACE DIGITALE
         </h1>
-        <p className="hero-sub mx-auto mt-8 max-w-xl text-balance text-black/60">
+        <p className="hero-sub mx-auto mt-8 max-w-xl text-balance text-foreground/60">
           {cv.identity.tagline}
         </p>
         <div className="hero-sub mt-10">
@@ -97,7 +96,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-cue absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-black/40">Scroll</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/40">Scroll</span>
         <div className="mx-auto mt-2 h-10 w-px bg-gradient-to-b from-indigo to-transparent" />
       </div>
     </section>

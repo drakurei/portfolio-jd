@@ -64,12 +64,12 @@ export default function Sidebar() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Réduire la navigation" : "Ouvrir la navigation"}
-        className="fixed right-5 top-6 z-[80] flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/70 backdrop-blur-xl transition hover:border-indigo/50"
+        className="fixed right-5 top-6 z-[80] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-xl transition hover:border-indigo/50"
       >
         <span className="flex flex-col gap-1">
-          <span className={`h-0.5 w-4 bg-[#1b1b2b] transition ${open ? "translate-y-1.5 rotate-45" : ""}`} />
-          <span className={`h-0.5 w-4 bg-[#1b1b2b] transition ${open ? "opacity-0" : ""}`} />
-          <span className={`h-0.5 w-4 bg-[#1b1b2b] transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
+          <span className={`h-0.5 w-4 bg-foreground transition ${open ? "translate-y-1.5 rotate-45" : ""}`} />
+          <span className={`h-0.5 w-4 bg-foreground transition ${open ? "opacity-0" : ""}`} />
+          <span className={`h-0.5 w-4 bg-foreground transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
         </span>
       </button>
 
@@ -79,7 +79,7 @@ export default function Sidebar() {
         }`}
       >
         {/* Liquid blur panel */}
-        <div className="pointer-events-none absolute inset-y-4 right-3 left-2 -z-10 rounded-3xl border border-black/[0.08] bg-white/70 shadow-[0_20px_60px_-30px_rgba(99,102,241,0.5)] backdrop-blur-2xl [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]" />
+        <div className="pointer-events-none absolute inset-y-4 right-3 left-2 -z-10 rounded-3xl border border-white/10 bg-white/[0.05] shadow-[0_20px_60px_-30px_rgba(139,92,246,0.6)] backdrop-blur-2xl [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]" />
 
         <Link href="/" prefetch={false} className="flex items-center gap-2">
           <div ref={logoRef} className="transition-[filter] duration-300 will-change-transform">
@@ -97,13 +97,13 @@ export default function Sidebar() {
                 prefetch={false}
                 className="group flex items-center gap-3"
               >
-                <span className={`font-mono text-[10px] transition ${isActive ? "text-indigo-bright" : "text-black/30"}`}>
+                <span className={`font-mono text-[10px] transition ${isActive ? "text-indigo-bright" : "text-foreground/30"}`}>
                   {item.index}
                 </span>
-                <span className={`text-sm transition ${isActive ? "font-medium text-[#1b1b2b]" : "text-black/45 group-hover:text-black/75"}`}>
+                <span className={`text-sm transition ${isActive ? "font-medium text-foreground" : "text-foreground/45 group-hover:text-foreground/75"}`}>
                   {item.label}
                 </span>
-                <span className={`ml-auto h-px transition-all ${isActive ? "w-6 bg-indigo" : "w-2 bg-black/20"}`} />
+                <span className={`ml-auto h-px transition-all ${isActive ? "w-6 bg-indigo" : "w-2 bg-foreground/20"}`} />
               </Link>
             );
           })}
@@ -111,13 +111,13 @@ export default function Sidebar() {
 
         {/* Reading progress bar verticale */}
         <div className="flex items-center gap-3">
-          <div className="relative h-24 w-px bg-black/10">
+          <div className="relative h-24 w-px bg-foreground/10">
             <div
               className="absolute left-0 top-0 w-px bg-gradient-to-b from-indigo-bright to-indigo"
               style={{ height: `${progress * 100}%` }}
             />
           </div>
-          <span className="font-mono text-[10px] text-black/30 tabular-nums">
+          <span className="font-mono text-[10px] text-foreground/30 tabular-nums">
             {String(Math.round(progress * 100)).padStart(2, "0")}%
           </span>
         </div>

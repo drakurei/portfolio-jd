@@ -30,10 +30,10 @@ export default function Journey() {
           <h2 className="display text-5xl font-semibold sm:text-6xl">
             Expériences <span className="text-gradient italic">terrain</span>
           </h2>
-          <p className="mt-6 max-w-xs text-sm text-black/50">
+          <p className="mt-6 max-w-xs text-sm text-foreground/50">
             Du support hospitalier à la sécurité embarquée — un parcours ancré dans le concret.
           </p>
-          <div className="mt-8 font-mono text-xs text-black/30">
+          <div className="mt-8 font-mono text-xs text-foreground/30">
             {cv.experiences.length} expériences · {cv.formations.length} formations
           </div>
         </div>
@@ -44,12 +44,12 @@ export default function Journey() {
           {cv.experiences.map((e) => (
             <div key={e.company} className="tl-item relative mb-10">
               <span className="absolute -left-[26px] top-1.5 h-2.5 w-2.5 rounded-full bg-indigo ring-4 ring-indigo/20" />
-              <p className="font-mono text-xs text-black/40">
+              <p className="font-mono text-xs text-foreground/40">
                 {e.dates} · {e.type}
               </p>
               <h3 className="mt-1 text-lg font-semibold">{e.title}</h3>
               <p className="text-sm text-indigo-bright">{e.company}</p>
-              <p className="mt-2 text-sm leading-relaxed text-black/60">{e.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/60">{e.description}</p>
             </div>
           ))}
 
@@ -59,11 +59,11 @@ export default function Journey() {
           <div className="space-y-4">
             {cv.formations.map((f) => (
               <div key={f.title} className="tl-item glass glass-hover p-6">
-                <p className="font-mono text-xs text-black/40">
+                <p className="font-mono text-xs text-foreground/40">
                   {f.dates} · {f.level}
                 </p>
                 <h4 className="mt-1 font-semibold">{f.title}</h4>
-                <p className="text-sm text-black/50">{f.school}</p>
+                <p className="text-sm text-foreground/50">{f.school}</p>
               </div>
             ))}
           </div>

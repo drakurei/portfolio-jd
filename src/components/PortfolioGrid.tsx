@@ -54,7 +54,7 @@ export default function PortfolioGrid() {
             className={`rounded-full border px-5 py-2 text-sm transition ${
               filter === f
                 ? "border-indigo bg-indigo text-white"
-                : "border-black/10 text-black/50 hover:text-black/80"
+                : "border-foreground/10 text-foreground/50 hover:text-foreground/80"
             }`}
           >
             {f}
@@ -75,7 +75,7 @@ export default function PortfolioGrid() {
             >
               {/* Cover ~60% avec parallaxe */}
               <div
-                className={`relative h-64 overflow-hidden rounded-2xl border border-black/5 md:h-80 md:col-span-3 ${
+                className={`relative h-64 overflow-hidden rounded-2xl border border-foreground/5 md:h-80 md:col-span-3 ${
                   reversed ? "md:order-2" : ""
                 }`}
               >
@@ -85,10 +85,10 @@ export default function PortfolioGrid() {
                     background: `linear-gradient(125deg, ${p.accent}40, transparent 60%), radial-gradient(circle at 70% 30%, ${p.accent}66, transparent 60%), #ffffff`,
                   }}
                 />
-                <span className="absolute left-6 top-6 font-mono text-7xl font-bold text-black/5">
+                <span className="absolute left-6 top-6 font-mono text-7xl font-bold text-foreground/5">
                   0{i + 1}
                 </span>
-                <span className="absolute right-5 top-5 rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
+                <span className="absolute right-5 top-5 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
                   {p.category}
                 </span>
               </div>
@@ -96,7 +96,7 @@ export default function PortfolioGrid() {
               {/* Infos ~40% */}
               <div className={`md:col-span-2 ${reversed ? "md:order-1" : ""}`}>
                 <h3 className="display text-3xl font-semibold sm:text-4xl">{p.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-black/60">{p.description}</p>
+                <p className="mt-4 text-sm leading-relaxed text-foreground/60">{p.description}</p>
 
                 {/* Stack révélé au survol (animation fluide en cascade) */}
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -111,7 +111,7 @@ export default function PortfolioGrid() {
                   ))}
                 </div>
 
-                <span className="mt-6 inline-flex items-center gap-2 text-sm text-black/70">
+                <span className="mt-6 inline-flex items-center gap-2 text-sm text-foreground/70">
                   Voir le case study
                   <span className="transition group-hover:translate-x-1">→</span>
                 </span>
