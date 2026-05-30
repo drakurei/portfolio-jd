@@ -67,9 +67,11 @@ export default function Hero() {
   return (
     <section ref={root} id="hero" className="section-shell overflow-hidden">
       <div className="hero-bg absolute inset-0 -z-10">
-        {/* Fond pastel clair (aurore) — pas de vidéo */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(196,181,253,0.55),transparent_55%),radial-gradient(ellipse_at_75%_70%,rgba(110,231,183,0.45),transparent_55%),radial-gradient(ellipse_at_80%_15%,rgba(253,186,116,0.4),transparent_50%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f5f5f7]" />
+        {/* Fond clair "énergie" (aurore bleu/cyan) — pas de vidéo */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(37,99,235,0.28),transparent_60%),radial-gradient(ellipse_at_20%_15%,rgba(14,165,233,0.22),transparent_55%),radial-gradient(ellipse_at_82%_25%,rgba(6,182,212,0.2),transparent_55%)]" />
+        {/* Rayons de lumière subtils */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[conic-gradient(from_180deg_at_50%_120%,transparent_0deg,rgba(37,99,235,0.12)_20deg,transparent_40deg,rgba(6,182,212,0.1)_60deg,transparent_80deg)] opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f5f7fa]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-12">

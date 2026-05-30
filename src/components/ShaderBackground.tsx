@@ -28,15 +28,15 @@ void main(){
   vec2 p = uv * 3.0;
   float t = u_time * 0.05;
   float f = fbm(p + vec2(t, -t) + fbm(p + t));
-  // Aurore pastel claire
-  vec3 base = vec3(0.965, 0.965, 0.985);
-  vec3 lav = vec3(0.77, 0.71, 0.99);
-  vec3 mint = vec3(0.43, 0.91, 0.72);
-  vec3 peach = vec3(0.99, 0.73, 0.45);
+  // Aurore "énergie" claire (bleu / cyan)
+  vec3 base = vec3(0.962, 0.969, 0.980);
+  vec3 blue = vec3(0.145, 0.388, 0.922);
+  vec3 cyan = vec3(0.024, 0.714, 0.831);
+  vec3 sky  = vec3(0.055, 0.647, 0.914);
   vec3 col = base;
-  col = mix(col, lav, smoothstep(0.30, 0.85, f) * 0.55);
-  col = mix(col, mint, smoothstep(0.78, 1.05, f) * 0.45);
-  col = mix(col, peach, (1.0 - smoothstep(0.0, 0.32, f)) * 0.30);
+  col = mix(col, sky,  smoothstep(0.28, 0.85, f) * 0.45);
+  col = mix(col, cyan, smoothstep(0.74, 1.05, f) * 0.40);
+  col = mix(col, blue, (1.0 - smoothstep(0.0, 0.34, f)) * 0.30);
   gl_FragColor = vec4(col, 1.0);
 }
 `;

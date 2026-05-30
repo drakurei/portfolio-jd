@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  /* Thème clair & pastel lumineux */
-  --background: #f5f5f7;
-  --foreground: #1b1b2b;
-  --muted: #5b5b6e;
+  /* Thème "Clair énergie" — inspiration Maritime/Fort Energy */
+  --background: #f5f7fa;
+  --foreground: #0f1b2d;
+  --muted: #51607a;
   --surface: #ffffff;
   --obsidian-800: #ffffff; /* surfaces de <option> (héritage de nom) */
-  --obsidian-700: #f1f1f4;
+  --obsidian-700: #eef2f7;
 
-  /* Accents */
-  --accent: #6366f1; /* indigo interactif */
-  --accent-deep: #7c3aed; /* violet lisible sur clair */
-  --lav: #c4b5fd;
-  --mint: #6ee7b7;
-  --peach: #fdba74;
+  /* Accents énergie (bleu / cyan) */
+  --accent: #2563eb; /* bleu interactif */
+  --accent-deep: #1d4ed8;
+  --cyan: #06b6d4;
+  --sky: #0ea5e9;
+  --lav: #93c5fd; /* aliases conservés -> teintes bleues/cyan */
+  --mint: #67e8f9;
+  --peach: #7dd3fc;
 
   --indigo: var(--accent);
-  --indigo-bright: var(--accent-deep);
+  --indigo-bright: #0369a1; /* texte d'accent lisible sur clair */
 
-  --glass-border: rgba(20, 20, 40, 0.08);
-  --glass-fill: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(15, 27, 45, 0.08);
+  --glass-fill: rgba(255, 255, 255, 0.6);
 }
 
 @theme inline {
@@ -33,6 +35,8 @@
   --color-lav: var(--lav);
   --color-mint: var(--mint);
   --color-peach: var(--peach);
+  --color-cyan: var(--cyan);
+  --color-sky: var(--sky);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-display);
@@ -109,26 +113,41 @@ body {
 
 /* ---- Dégradés de texte (lisibles sur clair) ---- */
 .text-gradient {
-  background: linear-gradient(120deg, #7c3aed 0%, #14b8a6 55%, #fb923c 100%);
+  background: linear-gradient(115deg, #1d4ed8 0%, #2563eb 40%, #06b6d4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .h-char {
-  background: linear-gradient(120deg, #7c3aed 0%, #14b8a6 55%, #fb923c 100%);
+  background: linear-gradient(115deg, #1d4ed8 0%, #2563eb 40%, #06b6d4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* ---- Typographie monumentale ---- */
+/* Titre en contour lumineux (réf "POWERING PROGRESS") */
+.outline-glow {
+  color: transparent;
+  -webkit-text-stroke: 1.4px rgba(37, 99, 235, 0.9);
+  text-shadow: 0 0 22px rgba(6, 182, 212, 0.35);
+}
+
+/* ---- Typographie "énergie" : capitales fines très espacées ---- */
 .display {
-  font-family: var(--font-display), Georgia, serif;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  font-style: normal;
+}
+.display span,
+.display em,
+.display i {
+  font-style: normal;
 }
 .display-tight {
-  letter-spacing: -0.05em;
+  letter-spacing: 0.04em;
 }
 
 .reveal-mask {
