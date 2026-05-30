@@ -32,14 +32,14 @@ export default function CustomCursor() {
     const onOver = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
       if (t.closest?.(INTERACTIVE)) {
-        gsap.to(ring.current, { scale: 1.9, borderColor: "rgba(124,58,237,0.9)", backgroundColor: "rgba(124,58,237,0.12)", duration: 0.25 });
+        gsap.to(ring.current, { scale: 1.9, borderColor: "rgba(154,123,63,0.9)", backgroundColor: "rgba(191,160,106,0.12)", duration: 0.25 });
         gsap.to(dot.current, { scale: 0.4, duration: 0.25 });
       }
     };
     const onOut = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
       if (t.closest?.(INTERACTIVE)) {
-        gsap.to(ring.current, { scale: 1, borderColor: "rgba(99,102,241,0.55)", backgroundColor: "transparent", duration: 0.25 });
+        gsap.to(ring.current, { scale: 1, borderColor: "rgba(191,160,106,0.6)", backgroundColor: "transparent", duration: 0.25 });
         gsap.to(dot.current, { scale: 1, duration: 0.25 });
       }
     };

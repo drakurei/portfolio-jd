@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 export default function CvPage() {
   return (
     <main className="grid-bg">
-      <section className="px-6 pt-28 pb-4">
+      <section className="px-6 pt-36 pb-4">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow mb-3">Curriculum Vitae</p>
             <RevealText as="h1" className="display text-6xl font-semibold sm:text-7xl">
-              Le <span className="text-gradient italic">parcours</span>.
+              Le <span className="text-gold-deep italic">parcours</span>.
             </RevealText>
           </div>
           <CvDownloadButton />
@@ -39,10 +39,6 @@ export default function CvPage() {
       </section>
 
       <Pricing />
-
-      <footer className="border-t border-foreground/5 px-6 py-10 text-center font-mono text-xs text-foreground/30">
-        © {new Date().getFullYear()} Jonathan Davy
-      </footer>
     </main>
   );
 }

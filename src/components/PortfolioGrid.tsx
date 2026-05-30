@@ -88,7 +88,7 @@ export default function PortfolioGrid() {
                 <span className="absolute left-6 top-6 font-mono text-7xl font-bold text-foreground/5">
                   0{i + 1}
                 </span>
-                <span className="absolute right-5 top-5 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
+                <span className="absolute right-5 top-5 rounded-full border border-foreground/10 bg-foreground/10 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
                   {p.category}
                 </span>
               </div>

@@ -51,19 +51,19 @@ export default function Loader() {
 
   return (
     <div ref={root} className="fixed inset-0 z-[100]">
-      {/* Couche noire qui se fait "essuyer" radialement pour révéler le site */}
-      <div className="radial-wipe absolute inset-0 bg-[#020202]" />
+      {/* Couche claire qui se fait "essuyer" pour révéler le site */}
+      <div className="radial-wipe absolute inset-0 bg-[#faf8f3]" />
 
       <div className="jd-core absolute inset-0 flex flex-col items-center justify-center">
         <svg width="220" height="240" viewBox="0 0 110 120" fill="none">
           <defs>
             <linearGradient id="loader-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="55%" stopColor="#818cf8" />
-              <stop offset="100%" stopColor="#6366f1" />
+              <stop offset="0%" stopColor="#d8c08a" />
+              <stop offset="55%" stopColor="#bfa06a" />
+              <stop offset="100%" stopColor="#9a7b3f" />
             </linearGradient>
             <filter id="loader-glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3.5" result="b" />
+              <feGaussianBlur stdDeviation="1.5" result="b" />
               <feMerge>
                 <feMergeNode in="b" />
                 <feMergeNode in="SourceGraphic" />

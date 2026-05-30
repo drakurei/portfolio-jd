@@ -49,7 +49,7 @@ export default function SkillsBento() {
                 {skills.map((s) => (
                   <span
                     key={s.name}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-foreground/80"
+                    className="rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1.5 text-sm text-foreground/80"
                     title={s.level}
                   >
                     {s.name}

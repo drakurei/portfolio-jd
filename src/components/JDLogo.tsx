@@ -29,12 +29,12 @@ export default function JDLogo({
     >
       <defs>
         <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="55%" stopColor="#818cf8" />
-          <stop offset="100%" stopColor="#6366f1" />
+          <stop offset="0%" stopColor="#d8c08a" />
+          <stop offset="55%" stopColor="#bfa06a" />
+          <stop offset="100%" stopColor="#9a7b3f" />
         </linearGradient>
         <filter id={fid} x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="b" />
+          <feGaussianBlur stdDeviation="1.5" result="b" />
           <feMerge>
             <feMergeNode in="b" />
             <feMergeNode in="SourceGraphic" />

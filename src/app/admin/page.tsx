@@ -227,10 +227,10 @@ export default function AdminPage() {
       )}
 
       <style>{`
-        .ipt { border-radius:.6rem; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:.55rem .8rem; font-size:.9rem; color:#ececf3; outline:none; }
-        .ipt:focus { border-color:rgba(167,139,250,.7); }
-        .btn-primary { border-radius:9999px; background:#8b5cf6; padding:.6rem 1.2rem; font-size:.85rem; color:#fff; }
-        .btn-ghost { border-radius:9999px; border:1px solid rgba(255,255,255,.2); padding:.6rem 1.2rem; font-size:.85rem; color:rgba(236,236,243,.7); }
+        .ipt { border-radius:.6rem; border:1px solid rgba(27,24,19,.14); background:rgba(255,255,255,.7); padding:.55rem .8rem; font-size:.9rem; color:#1b1813; outline:none; }
+        .ipt:focus { border-color:rgba(191,160,106,.8); }
+        .btn-primary { border-radius:9999px; background:linear-gradient(120deg,#c9aa72,#a9853f); padding:.6rem 1.2rem; font-size:.85rem; color:#fff; }
+        .btn-ghost { border-radius:9999px; border:1px solid rgba(27,24,19,.18); padding:.6rem 1.2rem; font-size:.85rem; color:#6b6356; }
       `}</style>
     </main>
   );

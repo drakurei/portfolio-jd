@@ -68,7 +68,7 @@ export default function StrategyBento() {
         <p className="eyebrow mb-3">02 — Stratégie & Analyse</p>
         <RevealText as="h2" className="display mb-12 max-w-3xl text-5xl font-semibold sm:text-7xl">
           Je ne code pas des pages. Je construis des{" "}
-          <span className="text-gradient italic">leviers business.</span>
+          <span className="text-gold-deep italic">leviers business.</span>
         </RevealText>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">

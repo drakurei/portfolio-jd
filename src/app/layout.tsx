@@ -4,7 +4,8 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import FilmGrain from "@/components/FilmGrain";
 import ShaderBackground from "@/components/ShaderBackground";
-import Sidebar from "@/components/Sidebar";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import PageViewTracker from "@/components/PageViewTracker";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -17,9 +18,21 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Jonathan Davy — Développeur Full Stack",
+  metadataBase: new URL("https://drakurei.github.io/portfolio-jd"),
+  title: {
+    default: "Jonathan Davy — Développeur Full Stack",
+    template: "%s · Jonathan Davy",
+  },
   description:
-    "Portfolio de Jonathan Davy : développement full‑stack, cybersécurité et réseaux. Réalisations, audit stratégique et demande d'expertise.",
+    "Jonathan Davy — développeur full‑stack (sécurité, réseaux, web premium). Sites sur‑mesure, performants et élégants. Évry (91).",
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    title: "Jonathan Davy — Développeur Full Stack",
+    description:
+      "Sites web premium sur‑mesure : performance, design émotionnel, architecture full‑stack.",
+    siteName: "Jonathan Davy",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -32,9 +45,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ShaderBackground />
         <FilmGrain />
         <CustomCursor />
-        <Sidebar />
+        <Navbar />
         <PageViewTracker />
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          {children}
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

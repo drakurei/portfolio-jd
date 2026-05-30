@@ -88,7 +88,7 @@ export default function WorkTeaser() {
                 <span className="absolute left-5 top-5 font-mono text-6xl font-bold text-foreground/10">
                   0{i + 1}
                 </span>
-                <span className="absolute right-5 top-5 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
+                <span className="absolute right-5 top-5 rounded-full border border-foreground/10 bg-foreground/10 px-3 py-1 text-[11px] font-medium text-indigo-bright backdrop-blur-sm">
                   {p.category}
                 </span>
               </div>

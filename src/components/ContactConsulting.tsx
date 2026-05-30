@@ -150,15 +150,15 @@ export default function ContactConsulting() {
         .ipt {
           width: 100%;
           border-radius: 0.75rem;
-          border: 1px solid rgba(255,255,255,0.12);
-          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(27,24,19,0.14);
+          background: rgba(255,255,255,0.7);
           padding: 0.7rem 0.9rem;
           font-size: 0.9rem;
-          color: #ececf3;
+          color: #1b1813;
           outline: none;
           transition: border-color 0.2s ease;
         }
-        .ipt:focus { border-color: rgba(167,139,250,0.7); }
+        .ipt:focus { border-color: rgba(191,160,106,0.8); }
       `}</style>
     </section>
   );

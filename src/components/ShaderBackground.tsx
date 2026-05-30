@@ -28,15 +28,15 @@ void main(){
   vec2 p = uv * 3.0;
   float t = u_time * 0.05;
   float f = fbm(p + vec2(t, -t) + fbm(p + t));
-  // Nébuleuse sombre violette (façon Ahmed Ragab)
-  vec3 base = vec3(0.039, 0.039, 0.071);
-  vec3 violet = vec3(0.545, 0.361, 0.965);
-  vec3 indigo = vec3(0.388, 0.400, 0.945);
-  vec3 deep   = vec3(0.486, 0.227, 0.929);
+  // Brume champagne très claire (luxe)
+  vec3 base = vec3(0.980, 0.972, 0.953);
+  vec3 gold = vec3(0.749, 0.627, 0.416);
+  vec3 champ = vec3(0.902, 0.843, 0.722);
+  vec3 sand = vec3(0.847, 0.753, 0.541);
   vec3 col = base;
-  col = mix(col, indigo, smoothstep(0.45, 0.95, f) * 0.30);
-  col = mix(col, violet, smoothstep(0.78, 1.08, f) * 0.28);
-  col = mix(col, deep,   (1.0 - smoothstep(0.0, 0.30, f)) * 0.18);
+  col = mix(col, champ, smoothstep(0.40, 0.95, f) * 0.40);
+  col = mix(col, gold,  smoothstep(0.80, 1.08, f) * 0.22);
+  col = mix(col, sand,  (1.0 - smoothstep(0.0, 0.32, f)) * 0.18);
   gl_FragColor = vec4(col, 1.0);
 }
 `;

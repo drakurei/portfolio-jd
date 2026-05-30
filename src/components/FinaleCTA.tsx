@@ -49,7 +49,7 @@ export default function FinaleCTA() {
           <Link
             href="/cv"
             prefetch={false}
-            className="rounded-full border border-white/15 px-6 py-3 text-sm text-foreground/75 transition hover:border-indigo/50 hover:text-foreground"
+            className="rounded-full border border-foreground/15 px-6 py-3 text-sm text-foreground/75 transition hover:border-indigo/50 hover:text-foreground"
           >
             Voir le CV interactif
           </Link>

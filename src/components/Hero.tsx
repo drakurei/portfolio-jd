@@ -67,10 +67,10 @@ export default function Hero() {
   return (
     <section ref={root} id="hero" className="section-shell overflow-hidden">
       <div className="hero-bg absolute inset-0 -z-10">
-        {/* Fond sombre + halos violet/indigo (façon Ahmed Ragab) */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(139,92,246,0.35),transparent_60%),radial-gradient(ellipse_at_20%_12%,rgba(99,102,241,0.22),transparent_55%),radial-gradient(ellipse_at_82%_22%,rgba(124,58,237,0.2),transparent_55%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[conic-gradient(from_180deg_at_50%_120%,transparent_0deg,rgba(139,92,246,0.16)_20deg,transparent_40deg,rgba(99,102,241,0.12)_60deg,transparent_80deg)] opacity-80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a12]" />
+        {/* Fond clair luxe + halos champagne/or subtils */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_115%,rgba(191,160,106,0.22),transparent_60%),radial-gradient(ellipse_at_18%_15%,rgba(230,215,184,0.35),transparent_55%),radial-gradient(ellipse_at_85%_20%,rgba(216,192,138,0.22),transparent_55%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[conic-gradient(from_180deg_at_50%_120%,transparent_0deg,rgba(191,160,106,0.12)_20deg,transparent_40deg,rgba(230,215,184,0.12)_60deg,transparent_80deg)] opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#faf8f3]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-12">

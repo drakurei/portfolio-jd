@@ -25,7 +25,7 @@ function Row() {
 
 export default function RoleMarquee() {
   return (
-    <section aria-hidden="true" className="relative overflow-hidden border-y border-white/5 py-10">
+    <section aria-hidden="true" className="relative overflow-hidden border-y border-foreground/5 py-10">
       <div className="marquee-track">
         <Row />
         <Row />

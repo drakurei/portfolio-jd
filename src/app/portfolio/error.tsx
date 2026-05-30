@@ -28,7 +28,7 @@ export default function PortfolioError({
         <Link
           href="/"
           prefetch={false}
-          className="rounded-full border border-white/15 px-6 py-3 text-sm text-foreground/70 transition hover:text-foreground"
+          className="rounded-full border border-foreground/15 px-6 py-3 text-sm text-foreground/70 transition hover:text-foreground"
         >
           Accueil
         </Link>
